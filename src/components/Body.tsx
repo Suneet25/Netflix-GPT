@@ -3,9 +3,7 @@ import { Route, Routes } from "react-router";
 import Login from "./Login";
 import Browse from "./Browse";
 
-type Props = {};
-
-const Body = (props: Props) => {
+const Body = () => {
   return (
     <div>
       <Routes>
