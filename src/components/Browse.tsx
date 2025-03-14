@@ -1,8 +1,4 @@
-import React from "react";
-
-type Props = {};
-
-const Browse = (props: Props) => {
+const Browse = () => {
   return <div>Browse</div>;
 };
 
