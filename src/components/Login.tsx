@@ -7,12 +7,16 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useDispatch } from "react-redux";
+import { addUser } from "../features/auth/authSlice";
+import { URLS } from "../utils/constants";
 type ValidationError = {
   email?: string;
   password?: string;
   otherError?: string;
 };
 const Login = () => {
+  const dispatch = useDispatch();
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [validationError, setValidationError] =
     useState<ValidationError | null>(null);
@@ -44,7 +48,15 @@ const Login = () => {
         )
           .then((userCredential) => {
             const user = userCredential.user;
-            console.log("SIGNED_IN_USER", user);
+            const { displayName, email, photoURL, uid } = auth.currentUser;
+            dispatch(
+              addUser({
+                uid: uid,
+                displayName: displayName,
+                email: email,
+                photoURL: photoURL,
+              })
+            );
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -61,6 +73,17 @@ const Login = () => {
             const user = userCredential.user;
             updateProfile(auth?.currentUser, {
               displayName: nameRef?.current?.value,
+              photoURL: URLS.USER_AVATAR,
+            }).then((user) => {
+              const { displayName, email, photoURL, uid } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  displayName: displayName,
+                  email: email,
+                  photoURL: photoURL,
+                })
+              );
             });
             console.log("SIGNED_UP_USER", user);
           })
@@ -86,7 +109,7 @@ const Login = () => {
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute bg-black/80 my-24 mx-auto left-0 right-0 w-3/12 flex flex-col items-center justify-center py-10 gap-5 px-10"
+        className="absolute bg-black/80 my-24 mx-auto left-0 right-0 bottom-32 w-3/12 flex flex-col items-center justify-center py-10 gap-5 px-10"
       >
         <h1 className="text-xl font-bold text-white">
           {isSignInForm ? "Sign In" : "Sign Up"}
