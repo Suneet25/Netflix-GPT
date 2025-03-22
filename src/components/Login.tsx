@@ -8,8 +8,8 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
-import { addUser } from "../features/auth/authSlice";
-import { URLS } from "../utils/constants";
+import { addUser } from "../features/authSlice";
+import { IMAGE_SOURCE } from "../utils/constants";
 type ValidationError = {
   email?: string;
   password?: string;
@@ -73,7 +73,7 @@ const Login = () => {
             const user = userCredential.user;
             updateProfile(auth?.currentUser, {
               displayName: nameRef?.current?.value,
-              photoURL: URLS.USER_AVATAR,
+              photoURL: IMAGE_SOURCE.USER_AVATAR,
             }).then((user) => {
               const { displayName, email, photoURL, uid } = auth.currentUser;
               dispatch(
