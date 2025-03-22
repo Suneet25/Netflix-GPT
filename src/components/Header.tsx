@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../utils/appStore";
-import { addUser, removeUser } from "../features/auth/authSlice";
+import { addUser, removeUser } from "../features/authSlice";
 import { useNavigate } from "react-router";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useEffect } from "react";
-import { URLS } from "../utils/constants";
+import { IMAGE_SOURCE } from "../utils/constants";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -44,9 +44,9 @@ const Header = () => {
     dispatch(removeUser());
   };
   return (
-    <div className="fixed bg-gradient-to-b to-black z-50 w-screen flex justify-between pl-4 items-center py-2 pr-10">
+    <div className="fixed bg-gradient-to-b from-black z-50 w-screen flex justify-between pl-4 items-center py-2 pr-10">
       <div>
-        <img src={URLS.LOGO} alt="logo" className="w-44" />
+        <img src={IMAGE_SOURCE.LOGO} alt="logo" className="w-44" />
       </div>
       {!!userData && (
         <div className="flex justify-center items-center gap-8">
