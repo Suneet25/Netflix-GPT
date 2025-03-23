@@ -10,21 +10,22 @@ const useMovieTrailer = ({ movie_id }: Props) => {
   const dispatch = useDispatch();
 
   const fetchMovieTrailer = async () => {
-    await fetch(URLS.MOVIE_TRAILER(movie_id), TMDB_OPTIONS)
-      .then((res) => res.json())
-      .then((res) => {
-        const filteredMovies = res?.results?.filter(
-          (movie) => movie.type === "Trailer"
-        );
-        const movieTrailer =
-          filteredMovies?.length > 0 ? filteredMovies?.[0] : res?.results?.[0];
-        dispatch(addMovieTrailer(movieTrailer));
-      })
-      .catch((err) => console.error(err));
+    const res = await fetch(URLS.MOVIE_TRAILER(movie_id), TMDB_OPTIONS);
+    const jsonData = await res.json();
+    const filteredMovies = jsonData?.results?.filter(
+      (movie) => movie.type === "Trailer"
+    );
+
+    const movieTrailer =
+      filteredMovies?.length > 0 ? filteredMovies?.[0] : jsonData?.results?.[0];
+    if (movieTrailer) {
+      dispatch(addMovieTrailer(movieTrailer));
+    }
   };
+
   useEffect(() => {
     fetchMovieTrailer();
-  }, []);
+  }, [movie_id]);
 };
 
 export default useMovieTrailer;
