@@ -28,20 +28,21 @@ const Browse = () => {
       <Header />
       {isGptSearch ? (
         <div className="">
-          <div className="fixed -z-10">
-            <img src={IMAGE_SOURCE?.NETFLIXGPT_BG_IMAGE} alt="bgImage" />
+          <div className="fixed -z-10 h-full w-full">
+            <img
+              src={IMAGE_SOURCE?.NETFLIXGPT_BG_IMAGE}
+              alt="bgImage"
+              className="object-cover h-full w-full"
+            />
           </div>
-          <div className="pt-[7%] pb-[4%] w-1/2 m-auto">
+          <div className="pt-[30%] md:pt-[7%] pb-[4%] w-full md:w-1/2 m-auto px-4 md:px-0">
             <GptForm
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
             />
           </div>
           {!!movies?.gptSearchMovies && (
-            <div className="bg-black mx-10 rounded-md opacity-90 px-5 mb-10">
-              <p className="text-2xl font-medium text-white text-center py-5">
-                Recommended Movies
-              </p>
+            <div className="bg-black mx-4 md:mx-10 rounded-md opacity-90 px-5 mb-10 py-10">
               {movies?.gptSearchMovies?.map((movie, index) => (
                 <MovieLists
                   key={movie?.results?.[index]?.id}

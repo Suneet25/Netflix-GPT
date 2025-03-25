@@ -3,13 +3,15 @@ import { IMAGE_CDN } from "../utils/constants";
 const MovieLists = ({ title, movies }) => {
   return (
     <div>
-      <p className="text-3xl font-semibold text-white mb-10">{title}</p>
+      <p className="text-lg md:text-3xl font-semibold text-white mb-10">
+        {title}
+      </p>
       <div className="z-50 flex overflow-x-scroll no-scrollbar">
         <div className="flex gap-4 mb-5">
           {movies?.map((movie) => (
             <div
               key={movie?.id}
-              className="w-[200px] rounded-md  cursor-pointer"
+              className="w-[100px] lg:w-[200px] rounded-md  cursor-pointer"
             >
               <img
                 loading="lazy"
