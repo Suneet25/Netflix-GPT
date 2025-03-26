@@ -11,7 +11,6 @@ const MovieTrailer = ({ movie_id }: Props) => {
   const MovieTrailer = useSelector(
     (state: RootState) => state?.movies?.movieTrailer
   );
-  console.log({ MovieTrailer });
 
   return (
     <div className="w-screen relative">

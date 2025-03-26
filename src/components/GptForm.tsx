@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import useGPTSearchMovies from "../hooks/useGPTSearchMovies";
 import { TMDB_OPTIONS } from "../utils/constants";
 import { client } from "../utils/openAI";
 import { URLS } from "../utils/urls";

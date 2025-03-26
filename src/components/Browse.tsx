@@ -60,8 +60,8 @@ const Browse = () => {
             <MovieTrailer movie_id={movies?.nowPlayingMovies?.[0]?.id} />
           </div>
           <div className="bg-black">
-            <div className="-mt-[250px] relative z-30 pl-10">
-              <div className="flex flex-col gap-10">
+            <div className="pt-10 md:pt-0 mt-0 md:-mt-[250px] relative z-30 pl-5 md:pl-10 ">
+              <div className="flex flex-col gap-5 md:gap-10">
                 <MovieLists
                   title="Now Playing"
                   movies={movies?.nowPlayingMovies}
