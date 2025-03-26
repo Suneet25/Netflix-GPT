@@ -101,12 +101,16 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="absolute">
-        <img src={IMAGE_SOURCE?.NETFLIXGPT_BG_IMAGE} alt="bgImage" />
+      <div className="fixed h-full w-full">
+        <img
+          src={IMAGE_SOURCE?.NETFLIXGPT_BG_IMAGE}
+          alt="bgImage"
+          className="object-cover h-full w-full"
+        />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute bg-black/80 my-24 mx-auto left-0 right-0 bottom-32 w-3/12 flex flex-col items-center justify-center py-10 gap-5 px-10"
+        className="absolute bg-black/80 my-24 mx-auto left-0 right-0 bottom-32 w-[90%] md:w-3/12 flex flex-col items-center justify-center py-10 gap-5 px-10"
       >
         <h1 className="text-xl font-bold text-white">
           {isSignInForm ? "Sign In" : "Sign Up"}

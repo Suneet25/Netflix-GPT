@@ -69,12 +69,10 @@ const Header = () => {
         scrolled && "bg-black opacity-90"
       }`}
     >
-      <div className="">
+      <div className="" onClick={() => navigate("/browse")}>
         <img src={IMAGE_SOURCE.LOGO} alt="logo" className="w-32 md:w-44" />
       </div>
       <div className="block md:hidden">
-        {/* Hamburger Icon (Mobile Only) */}
-        {/* Hamburger Icon (Mobile Only) */}
         <div className="block md:hidden p-4">
           <button onClick={() => setMenuOpen(true)}>
             <Icon
